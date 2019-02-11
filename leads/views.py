@@ -1,3 +1,15 @@
-from django.shortcuts import render
+from rest_framework import viewsets,permissions
+from .serializers import LeadSerializer
+from .models import Lead
 
-# Create your views here.
+
+
+#Lead viewset
+
+class LeadViewSet(viewsets.ModelViewSet):
+    queryset = Lead.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = LeadSerializer
+    
